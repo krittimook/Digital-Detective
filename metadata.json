@@ -1,0 +1,8 @@
+{
+  "name": "Remix Digital Detective",
+  "description": "Digital Detective — Think Smart. Spot the Fake. An interactive educational game teaching how to spot AI-generated images, decode scam messages, and protect digital privacy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

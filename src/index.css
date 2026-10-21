@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Prompt', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Prompt', 'Plus Jakarta Sans', sans-serif;
+    --color-primary: #7C3AED;
+    --color-deep-purple: #5B21B6;
+    --color-soft-lavender: #EDE9FE;
+    --color-bg-pale: #F7F5FF;
+    --color-surface: #FFFFFF;
+    --color-text-main: #241B35;
+    --color-text-secondary: #756B86;
+    --color-border: #E4DDF3;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F7F5FF;
+    color: #241B35;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: #241B35;
+  }
+}
+
+/* Subtle futuristic tech grid in pale lavender */
+.cyber-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+}
+
+.glow-subtle {
+  box-shadow: 0 4px 20px -2px rgba(124, 58, 237, 0.12);
+}
+
+.glow-card {
+  box-shadow: 0 4px 25px -4px rgba(124, 58, 237, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Accessibility focus styles */
+:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+}
+
