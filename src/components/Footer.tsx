@@ -72,6 +72,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               >
                 สถิติและผลงาน (My Progress)
               </button>
+              <button 
+                type="button"
+                onClick={() => onNavigate('creator')} 
+                className="hover:text-[#7C3AED] transition-colors text-left md:text-right cursor-pointer font-semibold text-[#7C3AED]"
+              >
+                ผู้จัดทำเว็บไซต์ (About the Creator)
+              </button>
             </div>
           </div>
         </div>

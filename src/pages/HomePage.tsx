@@ -15,9 +15,10 @@ import aiRobotDetectiveImg from '../assets/images/ai_robot_detective_17926036523
 
 interface HomePageProps {
   onEnterWebsite: () => void;
+  onNavigate?: (tab: string) => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onEnterWebsite }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onEnterWebsite, onNavigate }) => {
   const [imageError, setImageError] = useState(false);
 
   const handleEnter = () => {
@@ -178,16 +179,28 @@ export const HomePage: React.FC<HomePageProps> = ({ onEnterWebsite }) => {
           </p>
         </div>
 
-        {/* Editable Creator & Institution Placeholders */}
-        <div className="p-5 rounded-2xl bg-[#EDE9FE]/50 border border-[#C4B5FD] space-y-2 text-xs">
-          <p className="font-bold text-[#5B21B6] flex items-center gap-2">
-            <Users className="w-4 h-4 text-[#7C3AED]" />
-            <span>ข้อมูลโครงการและผู้จัดทำ (Project & Institutional Attribution):</span>
-          </p>
-          <div className="space-y-1 text-[#241B35] pl-6">
-            <p>• <strong>สถาบัน / หน่วยงาน:</strong> [ระบุชื่อสถาบันการศึกษา / หน่วยงาน / โครงการวิจัยเพื่อการศึกษา]</p>
-            <p>• <strong>ทีมผู้พัฒนา:</strong> [ระบุชื่อผู้จัดทำ / คณะผู้จัดทำ / ที่ปรึกษาโครงการ]</p>
-            <p>• <strong>วัตถุประสงค์:</strong> โครงการพัฒนาสื่อการเรียนรู้ด้านการรู้เท่าทันสื่อดิจิทัลและปัญญาประดิษฐ์</p>
+        {/* Project & Creator Attribution */}
+        <div className="p-5 rounded-2xl bg-[#EDE9FE]/50 border border-[#C4B5FD] space-y-3 text-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <p className="font-bold text-[#5B21B6] flex items-center gap-2">
+              <Users className="w-4 h-4 text-[#7C3AED]" />
+              <span>ข้อมูลโครงการและผู้จัดทำ (Project & Institutional Attribution):</span>
+            </p>
+            {onNavigate && (
+              <button
+                type="button"
+                onClick={() => onNavigate('creator')}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#7C3AED] hover:text-[#5B21B6] transition-colors cursor-pointer self-start sm:self-auto"
+              >
+                <span>ดูข้อมูลผู้จัดทำ (About the Creator)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+          <div className="space-y-1.5 text-[#241B35] pl-6">
+            <p>• <strong>สถาบันการศึกษา:</strong> มหาวิทยาลัยศิลปากร (Silpakorn University) • คณะศึกษาศาสตร์ สาขาวิชาเทคโนโลยีการศึกษา</p>
+            <p>• <strong>ผู้จัดทำเว็บไซต์:</strong> นางสาวกฤติมุข สงวนศรี (รหัสนักศึกษา 670610446, นักศึกษาชั้นปีที่ 3)</p>
+            <p>• <strong>วัตถุประสงค์:</strong> โครงการพัฒนาสื่อการเรียนรู้เชิงปฏิสัมพันธ์เพื่อการรู้เท่าทันสื่อดิจิทัลและปัญญาประดิษฐ์</p>
           </div>
         </div>
 
@@ -210,9 +223,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onEnterWebsite }) => {
           <p className="font-medium text-[#241B35]">
             © 2026 Digital Detective. All rights reserved.
           </p>
-          <p className="text-[#5B21B6]">
-            “Think Smart. Spot the Fake.”
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="text-[#5B21B6]">“Think Smart. Spot the Fake.”</span>
+            {onNavigate && (
+              <>
+                <span>•</span>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('creator')}
+                  className="font-bold text-[#7C3AED] hover:underline cursor-pointer"
+                >
+                  ผู้จัดทำเว็บไซต์ (About Creator)
+                </button>
+              </>
+            )}
+          </div>
         </div>
 
         <p className="text-center sm:text-left leading-relaxed">

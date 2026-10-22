@@ -10,7 +10,8 @@ import {
   LayoutDashboard,
   Layers,
   BookOpen,
-  BarChart3
+  BarChart3,
+  User
 } from 'lucide-react';
 import { sound } from '../utils/audio';
 
@@ -43,7 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'dashboard', label: 'หน้าหลักระบบ (Dashboard)', icon: LayoutDashboard },
     { id: 'missions', label: 'ภารกิจ (Missions)', icon: Layers },
     { id: 'knowledge', label: 'ศูนย์ความรู้ (Knowledge Center)', icon: BookOpen },
-    { id: 'stats', label: 'สถิติ (Statistics)', icon: BarChart3 }
+    { id: 'stats', label: 'สถิติ (Statistics)', icon: BarChart3 },
+    { id: 'creator', label: 'ผู้จัดทำเว็บไซต์ (About Creator)', icon: User }
   ];
 
   const handleNavClick = (id: string) => {
@@ -81,9 +83,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Zone 2: Navigation Links */}
         {isWelcomeHome ? (
-          // Welcome Homepage Navigation: Clean & minimal, no game controls
-          <div className="hidden md:flex items-center gap-2 text-xs font-medium text-[#756B86]">
+          // Welcome Homepage Navigation: Clean & minimal, with Creator link
+          <div className="hidden md:flex items-center gap-4 text-xs font-medium text-[#756B86]">
             <span>แหล่งเรียนรู้การรู้เท่าทัน AI และความปลอดภัยไซเบอร์</span>
+            <button
+              onClick={() => handleNavClick('creator')}
+              className="inline-flex items-center gap-1.5 py-1 px-3 rounded-lg text-[#5B21B6] bg-[#F7F5FF] hover:bg-[#EDE9FE] transition-colors cursor-pointer border border-[#DDD6FE] font-semibold"
+            >
+              <User className="w-3.5 h-3.5 text-[#7C3AED]" />
+              <span>ผู้จัดทำเว็บไซต์</span>
+            </button>
           </div>
         ) : (
           // Main Application Navigation: 4 App Sections + Return to Welcome Homepage
@@ -180,6 +189,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <span>เข้าสู่เว็บไซต์ (Enter Website)</span>
                 <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavClick('creator')}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#5B21B6] bg-[#EDE9FE] rounded-xl border border-[#DDD6FE] cursor-pointer hover:bg-[#DDD6FE] transition-colors"
+              >
+                <User className="w-4 h-4 text-[#7C3AED]" />
+                <span>ผู้จัดทำเว็บไซต์ (About the Creator)</span>
               </button>
             </div>
           ) : (

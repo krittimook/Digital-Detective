@@ -11,6 +11,7 @@ import { Mission4PrivacyGuardian } from './pages/missions/Mission4PrivacyGuardia
 import { Mission5MasterChallenge } from './pages/missions/Mission5MasterChallenge';
 import { KnowledgePage } from './pages/KnowledgePage';
 import { StatsPage } from './pages/StatsPage';
+import { AboutCreatorPage } from './pages/AboutCreatorPage';
 import { loadUserStats } from './utils/storage';
 import { MissionId, UserStats } from './types/game';
 
@@ -57,6 +58,7 @@ export default function App() {
         {currentTab === 'home' && (
           <HomePage
             onEnterWebsite={handleEnterWebsite}
+            onNavigate={handleNavigate}
           />
         )}
 
@@ -125,6 +127,13 @@ export default function App() {
             userStats={userStats}
             onStatsUpdated={(updated) => setUserStats(updated)}
             onStartMission={handleStartMission}
+          />
+        )}
+
+        {/* 7. About the Creator (ผู้จัดทำเว็บไซต์) */}
+        {currentTab === 'creator' && (
+          <AboutCreatorPage
+            onNavigate={handleNavigate}
           />
         )}
 
